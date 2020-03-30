@@ -9,11 +9,14 @@ ALPHANUMERIC = list(string.digits + string.ascii_letters)
 def generate_password():
     # Start coding here
     characters = SYMBOLS + ALPHANUMERIC
-    password_length = 15
-    password = ''
 
-    for _ in range(password_length):
-        password += secrets.choice(characters)
+    while True:
+        password = ''.join(secrets.choice(characters) for _ in range(15))
+
+        if (any(ch.islower() for ch in password)
+            and any(ch.isupper() for ch in password)
+                and any(ch.isdigit() for ch in password)):
+            break
 
     return password
 
