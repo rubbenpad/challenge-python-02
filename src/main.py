@@ -1,11 +1,21 @@
 # Resolve the problem!!
 import string
+import secrets
 
 SYMBOLS = list('!"#$%&\'()*+,-./:;?@[]^_`{|}~')
+ALPHANUMERIC = list(string.digits + string.ascii_letters)
 
 
 def generate_password():
     # Start coding here
+    characters = SYMBOLS + ALPHANUMERIC
+    password_length = 15
+    password = ''
+
+    for _ in range(password_length):
+        password += secrets.choice(characters)
+
+    return password
 
 
 def validate(password):
